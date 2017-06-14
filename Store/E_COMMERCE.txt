@@ -1,0 +1,73 @@
+CREATE database ecommerce
+
+CREATE TABLE Categorie
+(
+   Id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+   Nome VARCHAR(50) NOT NULL,
+   Descrizione VARCHAR(255) NULL,
+   Immagine VARCHAR(100) NULL
+)
+
+CREATE TABLE prodotti
+(
+   Id int NOT NULL PRIMARY KEY IDENTITY(1,1),
+   Nome VARCHAR(255) NOT NULL,
+   Prezzo DOUBLE NOT NULL,
+   Giacenza INT NULL,
+   Id_categoria INT NOT NULL,
+   FOREIGN KEY(Id_categoria) references Categorie(Id)
+)
+
+
+CREATE TABLE clienti
+(
+   Id int NOT NULL PRIMARY KEY IDENTITY(1,1),
+   Nome VARCHAR(50) NOT NULL,
+   cognome VARCHAR(50) NOT NULL,
+   codfiscale VARCHAR(16) NOT NULL,
+   ragionesociale VARCHAR(255) NULL,
+   piva INT NULL,
+   email VARCHAR NOT NULL   
+)
+
+CREATE TABLE ordini
+(
+   id int NOT NULL PRIMARY KEY IDENTITY(1,1),
+   data DATETIME NOT NULL,
+   id_cliente INT NOT NULL,
+   id_stato INT NOT NULL,
+   FOREIGN KEY(id_cliente) references Clienti(id),
+   FOREIGN KEY(id_stato) references Stati(id)
+) 
+
+CREATE TABLE transizioni
+(
+   idprodotto int NOT NULL PRIMARY KEY IDENTITY(1,1),
+   idordine int NOT NULL,
+   quantita int NOT NULL,
+   PRIMARY KEY(idprodotto, idordine),
+   FOREIGN KEY(idprodotto) references prodotti(id),
+   FOREIGN KEY(idordine) references ordini(id)
+)
+
+CREATE TABLE stati
+(
+  id int NOT NULL PRIMARY KEY IDENTITY(1,1),
+  nome ENUM("inserito", "in lavorazione", "in spedizione", "evaso") NOT NULL,
+  PRIMARY KEY(id)
+)
+
+CREATE TABLE indirizzi
+(
+   id int NOT NULL PRIMARY KEY IDENTITY(1,1),
+   tipo VARCHAR(10) NOT NULL CHECK (tipo IN('via', 'corso', 'largo','piazza')),
+   citta VARCHAR(255) NOT NULL,
+   provincia VARCHAR(255) NOT NULL,
+   cap INT NOT NULL,
+   fattura VARCHAR(255) NOT NULL,
+   spedizione VARCHAR(255) NOT NULL,
+   id_cliente NOT NULL , 
+   FOREIGN KEY(id_cliente) references clienti(id)
+)   
+   
+

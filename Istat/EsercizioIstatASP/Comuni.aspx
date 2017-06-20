@@ -4,15 +4,18 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div>Comuni</div>
+    <div>
+        Cerca: <asp:TextBox ID="txtCerca" runat="server"></asp:TextBox>
+        <asp:Button ID="btnCerca" runat="server" Text="Cerca" />
+    </div>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="sdsComuni" ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
-            <asp:BoundField DataField="Ripartizione" HeaderText="Ripartizione" SortExpression="Ripartizione" />
+            <asp:BoundField DataField="Ripartizione Geografica" HeaderText="Ripartizione Geografica" SortExpression="Ripartizione Geografica" />
             <asp:BoundField DataField="Regione" HeaderText="Regione" SortExpression="Regione" />
             <asp:BoundField DataField="Provincia" HeaderText="Provincia" SortExpression="Provincia" />
             <asp:BoundField DataField="Comune" HeaderText="Comune" SortExpression="Comune" />
             <asp:BoundField DataField="Popolazione" HeaderText="Popolazione" SortExpression="Popolazione" />
-            <asp:CheckBoxField DataField="Capoluogo" HeaderText="Capoluogo" SortExpression="Capoluogo" />
         </Columns>
         <EditRowStyle BackColor="#999999" />
         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -26,7 +29,11 @@
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
 
-    <asp:SqlDataSource ID="sdsComuni" runat="server" ConnectionString="<%$ ConnectionStrings:IstatConnectionString %>" SelectCommand="sp_get_comuni" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="sdsComuni" runat="server" ConnectionString="<%$ ConnectionStrings:IstatConnectionString %>" SelectCommand="sp_comuni_ricerca_testo" SelectCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="txtCerca" DefaultValue="0" Name="testo" PropertyName="Text" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
 
 </asp:Content>
 

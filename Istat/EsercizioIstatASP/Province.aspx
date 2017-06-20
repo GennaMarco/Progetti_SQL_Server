@@ -9,7 +9,7 @@
         <asp:DropDownList ID="ddlRipartizioni" runat="server" AppendDataBoundItems="True" AutoPostBack="True" DataSourceID="sdsRipartizioni" DataTextField="Denominazione" DataValueField="Id" OnSelectedIndexChanged="ddlRipartizioni_SelectedIndexChanged">
             <asp:ListItem Selected="True" Value="0">Tutti</asp:ListItem>
         </asp:DropDownList>
-        <asp:SqlDataSource ID="sdsRipartizioni" runat="server" ConnectionString="<%$ ConnectionStrings:IstatConnectionStringLaptop %>" SelectCommand="sp_get_ripartizioni_geografiche" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="sdsRipartizioni" runat="server" ConnectionString="<%$ ConnectionStrings:IstatConnectionString %>" SelectCommand="sp_get_ripartizioni_geografiche" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     </div>
 
     <div>
@@ -17,7 +17,7 @@
         <asp:DropDownList ID="ddlRegioni" runat="server" AppendDataBoundItems="True" AutoPostBack="True" DataSourceID="sdsRegioni" DataTextField="Regione" DataValueField="IdRegione">
             <asp:ListItem Selected="True" Value="0">Tutti</asp:ListItem>
         </asp:DropDownList>
-        <asp:SqlDataSource ID="sdsRegioni" runat="server" ConnectionString="<%$ ConnectionStrings:IstatConnectionStringLaptop %>" SelectCommand="sp_get_regioni_per_idripartizione" SelectCommandType="StoredProcedure">
+        <asp:SqlDataSource ID="sdsRegioni" runat="server" ConnectionString="<%$ ConnectionStrings:IstatConnectionString %>" SelectCommand="sp_get_regioni_per_idripartizione" SelectCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:ControlParameter ControlID="ddlRipartizioni" Name="idripartizione" PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
@@ -42,7 +42,7 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-        <asp:SqlDataSource ID="sdsProvince" runat="server" ConnectionString="<%$ ConnectionStrings:IstatConnectionStringLaptop %>" SelectCommand="sp_get_province_per_idregione" SelectCommandType="StoredProcedure">
+        <asp:SqlDataSource ID="sdsProvince" runat="server" ConnectionString="<%$ ConnectionStrings:IstatConnectionString %>" SelectCommand="sp_get_province_per_idregione" SelectCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:ControlParameter ControlID="ddlRipartizioni" Name="idripartizione" PropertyName="SelectedValue" Type="Int32" />
                 <asp:ControlParameter ControlID="ddlRegioni" Name="idregione" PropertyName="SelectedValue" Type="Int32" />

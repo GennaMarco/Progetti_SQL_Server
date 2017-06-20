@@ -9,7 +9,7 @@
         <asp:DropDownList ID="ddlRipartizioni" runat="server" AppendDataBoundItems="True" AutoPostBack="True" DataSourceID="sdsRipartizioni" DataTextField="Denominazione" DataValueField="Id">
             <asp:ListItem Selected="True" Value="0">Tutti</asp:ListItem>
         </asp:DropDownList>
-        <asp:SqlDataSource ID="sdsRipartizioni" runat="server" ConnectionString="<%$ ConnectionStrings:IstatConnectionStringLaptop %>" SelectCommand="sp_get_ripartizioni_geografiche" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="sdsRipartizioni" runat="server" ConnectionString="<%$ ConnectionStrings:IstatConnectionString %>" SelectCommand="sp_get_ripartizioni_geografiche" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     </div>
 
     <div>
@@ -32,7 +32,7 @@
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:gridview>
     </div>
-    <asp:SqlDataSource ID="sdsRegione" runat="server" ConnectionString="<%$ ConnectionStrings:IstatConnectionStringLaptop %>" SelectCommand="sp_get_regioni_per_idripartizione" SelectCommandType="StoredProcedure">
+    <asp:SqlDataSource ID="sdsRegione" runat="server" ConnectionString="<%$ ConnectionStrings:IstatConnectionString %>" SelectCommand="sp_get_regioni_per_idripartizione" SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:ControlParameter ControlID="ddlRipartizioni" Name="idripartizione" PropertyName="SelectedValue" Type="Int32" />
         </SelectParameters>

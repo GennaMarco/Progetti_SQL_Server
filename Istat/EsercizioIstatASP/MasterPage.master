@@ -13,14 +13,21 @@
 <body>
     <form id="form1" runat="server">
         <div id="container">
+            
             <div id="banner"></div>
             <div id="navbar">
-                <a href="Default.aspx">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="RipartizioneGeografiche.aspx">RipartizioniGeografiche</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="Regioni.aspx">Regioni</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="Province.aspx">Province</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="Comuni.aspx">Comuni</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-            </div>
+                <asp:HyperLink ID="lnkHome" runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <asp:HyperLink ID="lnkRipartizioni" runat="server" NavigateUrl="~/RipartizioneGeografiche.aspx">Ripartizioni Geografiche</asp:HyperLink>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <asp:HyperLink ID="lnkRegioni" runat="server" NavigateUrl="~/Regioni.aspx">Regioni</asp:HyperLink>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <asp:HyperLink ID="lnkProvince" runat="server" NavigateUrl="~/Province.aspx">Province</asp:HyperLink>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <asp:HyperLink ID="lnkComuni" runat="server" NavigateUrl="~/Comuni.aspx">Comuni</asp:HyperLink>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <asp:HyperLink ID="lnkCMS" runat="server" NavigateUrl="~/CMS/Amministrazione.aspx">CMS</asp:HyperLink>
+         </div>
             
             <div id="content">
                 <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
